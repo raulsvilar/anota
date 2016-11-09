@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "70847432433",
+    "firebase_url": "https://cade-a-nota.firebaseio.com",
+    "project_id": "cade-a-nota",
+    "storage_bucket": "cade-a-nota.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:70847432433:android:a3e8e780fbc94483",
+        "android_client_info": {
+          "package_name": "cade_a_nota.bigmini.com.br.cade_a_nota"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "70847432433-5jbbef7hg40ct04tbii1f57rr7jqd162.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMqnbR3aMO3ei6U1RD2c-UaWGxv6fQ3S8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
