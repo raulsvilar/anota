@@ -31,6 +31,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".views.LoginActivity"/>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="6d729b03e4e82c992f99ede97cd4a4e428c30a29" />
     </application>
 
 </manifest>
