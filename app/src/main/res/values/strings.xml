@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">App</string>
     <string name="facebook_app_id">364048993932747</string>
+    <string name="msg_close">Fechar</string>
+    <string name="msg_title_dialog">Cade a nota</string>
+    <string name="err_message_login">Não foi possível acessar o cade a nota. Tente novamente</string>
 </resources>
