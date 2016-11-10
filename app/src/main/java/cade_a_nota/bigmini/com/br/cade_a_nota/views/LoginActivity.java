@@ -2,22 +2,23 @@ package cade_a_nota.bigmini.com.br.cade_a_nota.views;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookSdk;
 import com.facebook.login.widget.LoginButton;
-import com.google.firebase.auth.FirebaseAuth;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import cade_a_nota.bigmini.com.br.cade_a_nota.R;
 import cade_a_nota.bigmini.com.br.cade_a_nota.presenter.LoginPresenter;
 
-public class LoginActivity extends AppCompatActivity implements LoginPresenter.LoginStatus {
+public class LoginActivity extends BaseActivity implements LoginPresenter.LoginStatus {
     private CallbackManager callbackManager;
-    private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
     private LoginPresenter presenter;
     @BindView(R.id.loginFacebook)
     LoginButton loginButton;
@@ -28,10 +29,12 @@ public class LoginActivity extends AppCompatActivity implements LoginPresenter.L
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-        presenter = new LoginPresenter(this, mAuth, mAuthListener);
+        presenter = new LoginPresenter(this);
+
         callbackManager = CallbackManager.Factory.create();
         loginButton.setReadPermissions("email", "public_profile");
         loginButton.registerCallback(callbackManager, presenter.facebookCallback());
+
     }
 
     @Override
@@ -41,7 +44,7 @@ public class LoginActivity extends AppCompatActivity implements LoginPresenter.L
     }
 
     @Override
-    public void onSucess() {
+    public void loginWithSucess() {
         startActivity(new Intent(LoginActivity.this, MainActivity.class));
         finish();
     }
@@ -49,6 +52,21 @@ public class LoginActivity extends AppCompatActivity implements LoginPresenter.L
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        callbackManager.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == LoginPresenter.RC_SIGN_IN) {
+            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+            if (result.isSuccess()) {
+                GoogleSignInAccount account = result.getSignInAccount();
+                presenter.authWithGoogle(account);
+            } else {
+                showDialogMessage(getString(R.string.err_message_login));
+            }
+        } else {
+            callbackManager.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+
+    @OnClick({R.id.googleLoginSignInButton})
+    public void onClick(View v) {
+        presenter.sigInWithGoogle();
     }
 }
