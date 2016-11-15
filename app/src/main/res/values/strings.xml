@@ -4,4 +4,11 @@
     <string name="msg_close">Fechar</string>
     <string name="msg_title_dialog">Cade a nota</string>
     <string name="err_message_login">Não foi possível acessar o cade a nota. Tente novamente</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="name">Nome</string>
+    <string name="email">Email</string>
+    <string name="exclude_acc">Excluir conta</string>
+    <string name="msg_loading">Carregando...</string>
 </resources>

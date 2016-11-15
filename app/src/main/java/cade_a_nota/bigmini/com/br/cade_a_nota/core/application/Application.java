@@ -1,9 +1,10 @@
-package cade_a_nota.bigmini.com.br.cade_a_nota;
+package cade_a_nota.bigmini.com.br.cade_a_nota.core.application;
 
-import com.facebook.FacebookSdk;
 import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
+
 import io.fabric.sdk.android.Fabric;
+
 
 /**
  * Created by Kanda on 08/11/2016.
