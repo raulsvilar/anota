@@ -1,4 +1,4 @@
-package cade_a_nota.bigmini.com.br.cade_a_nota.views;
+package cade_a_nota.bigmini.com.br.cade_a_nota.views.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
 import cade_a_nota.bigmini.com.br.cade_a_nota.R;
+import cade_a_nota.bigmini.com.br.cade_a_nota.views.LoginActivity;
 
 public class SplashActivity extends AppCompatActivity {
     private static int TIME_OUT = 2000;
