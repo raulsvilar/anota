@@ -26,7 +26,6 @@ public class CustomBaseActivity extends InjectLayoutBaseActivity {
         super.onStart();
         try {
             bindButterKnife();
-            modifyViews();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -34,8 +33,8 @@ public class CustomBaseActivity extends InjectLayoutBaseActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getApplicationContext());
+        super.onCreate(savedInstanceState);
     }
 
     protected void onStop() {

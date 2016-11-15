@@ -22,6 +22,11 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.auth.TwitterAuthProvider;
+import com.twitter.sdk.android.core.Callback;
+import com.twitter.sdk.android.core.Result;
+import com.twitter.sdk.android.core.TwitterException;
+import com.twitter.sdk.android.core.TwitterSession;
 
 import cade_a_nota.bigmini.com.br.cade_a_nota.R;
 import cade_a_nota.bigmini.com.br.cade_a_nota.views.activities.LoginActivity;
@@ -46,12 +51,6 @@ public class LoginPresenter implements GoogleApiClient.OnConnectionFailedListene
         this.mAuth = FirebaseAuth.getInstance();
         this.mAuthListener = authStateListener();
         this.mAuth.addAuthStateListener(this.mAuthListener);
-
-    }
-
-    @Override
-    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-        Log.d(TAG, "onConnectionFailed:" + connectionResult);
     }
 
     public void onStop() {
@@ -104,7 +103,6 @@ public class LoginPresenter implements GoogleApiClient.OnConnectionFailedListene
 
     private FirebaseAuth.AuthStateListener authStateListener() {
         return new FirebaseAuth.AuthStateListener() {
-
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 Log.e("AUTH", firebaseAuth.toString());
@@ -133,19 +131,36 @@ public class LoginPresenter implements GoogleApiClient.OnConnectionFailedListene
                 .addOnCompleteListener(activity, this);
     }
 
+    private void authWithTwitter(String token, String secret) {
+        AuthCredential credential = TwitterAuthProvider.getCredential(token, secret);
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener(activity, this);
+    }
+    public Callback<TwitterSession> twitterCallBack(){
+        return new Callback<TwitterSession>() {
+            @Override
+            public void success(Result<TwitterSession> result) {
+                authWithTwitter(result.data.getAuthToken().token,result.data.getAuthToken().secret);
+            }
+
+            @Override
+            public void failure(TwitterException error) {
+                Log.e("Error", error.getCause() + error.getMessage());
+            }
+        };
+    }
     @Override
     public void onComplete(@NonNull Task<AuthResult> task) {
-        Log.d(TAG, "signInWithCredential:onComplete:" + task.isSuccessful());
-        // If sign in fails, display a message to the user. If sign in succeeds
-        // the auth state listener will be notified and logic to handle the
-        // signed in user can be handled in the listener.
         if (!task.isSuccessful()) {
             Log.w(TAG, "signInWithCredential", task.getException());
             Toast.makeText(activity, "Authentication failed.",
                     Toast.LENGTH_SHORT).show();
         }
     }
-
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+        Log.d(TAG, "onConnectionFailed:" + connectionResult);
+    }
     public interface LoginStatus {
         void loginWithSucess();
     }
