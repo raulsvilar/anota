@@ -15,7 +15,6 @@ import butterknife.OnClick;
 import cade_a_nota.bigmini.com.br.cade_a_nota.R;
 import cade_a_nota.bigmini.com.br.cade_a_nota.core.activities.BaseActivity;
 import cade_a_nota.bigmini.com.br.cade_a_nota.presenter.LoginPresenter;
-import cade_a_nota.bigmini.com.br.cade_a_nota.views.MainActivity;
 
 @InjectLayout(layout = R.layout.activity_login)
 public class LoginActivity extends BaseActivity implements LoginPresenter.LoginStatus {

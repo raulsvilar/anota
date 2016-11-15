@@ -6,7 +6,6 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
 import cade_a_nota.bigmini.com.br.cade_a_nota.R;
-import cade_a_nota.bigmini.com.br.cade_a_nota.views.LoginActivity;
 
 public class SplashActivity extends AppCompatActivity {
     private static int TIME_OUT = 2000;

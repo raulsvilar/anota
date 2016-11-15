@@ -8,7 +8,7 @@ import com.jgabrielfreitas.layoutid.activity.InjectLayoutBaseActivity;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import cade_a_nota.bigmini.com.br.cade_a_nota.core.BaseFragment;
+import cade_a_nota.bigmini.com.br.cade_a_nota.core.fragments.BaseFragment;
 
 /**
  * Created by Kanda on 15/11/2016.

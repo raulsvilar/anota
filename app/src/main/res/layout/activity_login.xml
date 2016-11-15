@@ -5,7 +5,7 @@
     android:id="@+id/activity_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="cade_a_nota.bigmini.com.br.cade_a_nota.views.LoginActivity">
+    tools:context="cade_a_nota.bigmini.com.br.cade_a_nota.views.activities.LoginActivity">
 
     <com.facebook.login.widget.LoginButton
         android:id="@+id/loginFacebook"
