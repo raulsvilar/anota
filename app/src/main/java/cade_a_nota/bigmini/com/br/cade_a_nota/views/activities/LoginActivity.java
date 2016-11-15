@@ -1,22 +1,22 @@
-package cade_a_nota.bigmini.com.br.cade_a_nota.views;
+package cade_a_nota.bigmini.com.br.cade_a_nota.views.activities;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
 
 import com.facebook.CallbackManager;
-import com.facebook.FacebookSdk;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
+import com.jgabrielfreitas.layoutid.annotations.InjectLayout;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cade_a_nota.bigmini.com.br.cade_a_nota.R;
+import cade_a_nota.bigmini.com.br.cade_a_nota.core.activities.BaseActivity;
 import cade_a_nota.bigmini.com.br.cade_a_nota.presenter.LoginPresenter;
 
+@InjectLayout(layout = R.layout.activity_login)
 public class LoginActivity extends BaseActivity implements LoginPresenter.LoginStatus {
     private CallbackManager callbackManager;
     private LoginPresenter presenter;
@@ -24,17 +24,12 @@ public class LoginActivity extends BaseActivity implements LoginPresenter.LoginS
     LoginButton loginButton;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        FacebookSdk.sdkInitialize(getApplicationContext());
-        setContentView(R.layout.activity_login);
-        ButterKnife.bind(this);
+    protected void onStart() {
+        super.onStart();
         presenter = new LoginPresenter(this);
-
         callbackManager = CallbackManager.Factory.create();
         loginButton.setReadPermissions("email", "public_profile");
         loginButton.registerCallback(callbackManager, presenter.facebookCallback());
-
     }
 
     @Override

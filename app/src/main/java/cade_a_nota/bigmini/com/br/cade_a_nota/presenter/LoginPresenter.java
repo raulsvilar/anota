@@ -24,7 +24,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 import cade_a_nota.bigmini.com.br.cade_a_nota.R;
-import cade_a_nota.bigmini.com.br.cade_a_nota.views.LoginActivity;
+import cade_a_nota.bigmini.com.br.cade_a_nota.views.activities.LoginActivity;
 
 /**
  * Created by Kanda on 09/11/2016.

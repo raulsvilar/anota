@@ -5,6 +5,6 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="cade_a_nota.bigmini.com.br.cade_a_nota.views.MainActivity">
+    tools:context="cade_a_nota.bigmini.com.br.cade_a_nota.views.activities.MainActivity">
 
 </android.support.constraint.ConstraintLayout>
