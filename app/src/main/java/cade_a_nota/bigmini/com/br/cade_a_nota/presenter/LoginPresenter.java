@@ -52,7 +52,10 @@ public class LoginPresenter implements GoogleApiClient.OnConnectionFailedListene
         this.mAuthListener = authStateListener();
         this.mAuth.addAuthStateListener(this.mAuthListener);
     }
-
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+        Log.d(TAG, "onConnectionFailed:" + connectionResult);
+    }
     public void onStop() {
         if (this.mAuthListener != null) {
             this.mAuth.removeAuthStateListener(mAuthListener);
@@ -119,7 +122,7 @@ public class LoginPresenter implements GoogleApiClient.OnConnectionFailedListene
         };
     }
 
-    public void sigInWithGoogle() {
+    public void startAuthWithGoogle() {
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         activity.startActivityForResult(signInIntent, RC_SIGN_IN);
     }
@@ -157,10 +160,7 @@ public class LoginPresenter implements GoogleApiClient.OnConnectionFailedListene
                     Toast.LENGTH_SHORT).show();
         }
     }
-    @Override
-    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-        Log.d(TAG, "onConnectionFailed:" + connectionResult);
-    }
+
     public interface LoginStatus {
         void loginWithSucess();
     }

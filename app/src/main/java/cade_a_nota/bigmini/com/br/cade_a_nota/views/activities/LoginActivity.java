@@ -25,7 +25,7 @@ public class LoginActivity extends AppCompatActivity implements LoginPresenter.L
     private LoginPresenter presenter;
 
     @BindView(R.id.loginFacebook)
-    LoginButton loginButton;
+    LoginButton loginFacebookButton;
     @BindView(R.id.twitterLoginButton)
     TwitterLoginButton twitterLoginButton;
 
@@ -37,8 +37,8 @@ public class LoginActivity extends AppCompatActivity implements LoginPresenter.L
         ButterKnife.bind(this);
         presenter = new LoginPresenter(this);
         callbackManager = CallbackManager.Factory.create();
-        loginButton.setReadPermissions("email", "public_profile");
-        loginButton.registerCallback(callbackManager, presenter.facebookCallback());
+        loginFacebookButton.setReadPermissions("email", "public_profile");
+        loginFacebookButton.registerCallback(callbackManager, presenter.facebookCallback());
         twitterLoginButton.setCallback(presenter.twitterCallBack());
     }
 
@@ -73,6 +73,6 @@ public class LoginActivity extends AppCompatActivity implements LoginPresenter.L
 
     @OnClick({R.id.googleLoginSignInButton})
     public void onClick(View v) {
-        presenter.sigInWithGoogle();
+        presenter.startAuthWithGoogle();
     }
 }

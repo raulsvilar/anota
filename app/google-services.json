@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "70847432433-l8fnsv96lsj9ehdhb5dan57llcmsso53.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "cade_a_nota.bigmini.com.br.cade_a_nota",
+            "certificate_hash": "150D61D3C2C19795185F086FF111CDA6AE836D4C"
+          }
+        },
+        {
           "client_id": "70847432433-5jbbef7hg40ct04tbii1f57rr7jqd162.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "70847432433-5jbbef7hg40ct04tbii1f57rr7jqd162.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2
