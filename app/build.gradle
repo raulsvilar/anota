@@ -60,5 +60,13 @@ dependencies {
     compile 'com.github.jgabrielfreitas:InjectLayout:1.0.1'
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+    compile('com.twitter.sdk.android:twitter:2.2.0@aar') {
+        transitive = true;
+    }
+    compile 'com.github.jgabrielfreitas:InjectLayout:1.0.1'
+    compile 'com.journeyapps:zxing-android-embedded:3.0.2@aar'
+    compile 'me.dm7.barcodescanner:zxing:1.8.4'
+
+
 }
 apply plugin: 'com.google.gms.google-services'
