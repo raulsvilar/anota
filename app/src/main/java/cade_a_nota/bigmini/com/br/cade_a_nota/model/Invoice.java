@@ -1,4 +1,4 @@
-package cade_a_nota.bigmini.com.br.cade_a_nota.model;
+package cade_a_nota.bigmini.com.br.notes.model;
 
 import java.util.Date;
 

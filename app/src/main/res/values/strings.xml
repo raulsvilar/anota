@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">App</string>
+    <string name="app_name">Anota</string>
     <string name="facebook_app_id">364048993932747</string>
     <string name="msg_close">Fechar</string>
     <string name="msg_title_dialog">Cade a nota</string>
@@ -15,4 +15,8 @@
     <string name="menu_profile">Perfil</string>
     <string name="menu_about">Sobre</string>
     <string name="menu_my_notes">Notas</string>
+    <string name="emptyNote">Nenhuma nota encontrada</string>
+    <string name="add_note">Adicionar nota</string>
+    <string name="configurations">Configurações</string>
+    <string name="allow">Continuar</string>
 </resources>

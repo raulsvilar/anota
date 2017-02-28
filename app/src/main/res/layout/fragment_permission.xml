@@ -1,0 +1,64 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/action">
+
+        <TextView
+            android:layout_margin="8dp"
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageView2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="17dp"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:fontFamily="roboto-light"
+            android:text="Para conseguirmos ler suas notas, precisamos de acesso a camera." />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/permission_state"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:weightSum="12"
+        android:id="@+id/action"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="right"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorAccent"
+        android:orientation="horizontal" >
+        <android.support.v7.widget.AppCompatButton
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:id="@+id/primaryAction"
+            android:layout_weight="3"
+            android:textSize="18sp"
+            android:text="@string/allow"
+            android:textAllCaps="false"
+            android:textColor="@color/color_white"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+        <android.support.v7.widget.AppCompatButton
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:id="@+id/secondaryAction"
+            android:layout_weight="3"
+            android:text="@string/configurations"
+            android:textAllCaps="false"
+            android:visibility="gone"
+            android:textSize="18sp"
+            android:textColor="@color/color_white"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+</RelativeLayout>

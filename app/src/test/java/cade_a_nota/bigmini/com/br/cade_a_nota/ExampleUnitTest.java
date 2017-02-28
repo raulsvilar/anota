@@ -1,4 +1,4 @@
-package cade_a_nota.bigmini.com.br.cade_a_nota;
+package cade_a_nota.bigmini.com.br.notes;
 
 import org.junit.Test;
 

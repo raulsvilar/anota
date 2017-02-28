@@ -6,6 +6,8 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
 import cade_a_nota.bigmini.com.br.cade_a_nota.R;
+import cade_a_nota.bigmini.com.br.cade_a_nota.presentation.login.LoginFragment;
+
 
 public class SplashActivity extends AppCompatActivity {
     private static int TIME_OUT = 2000;
@@ -17,7 +19,7 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(SplashActivity.this, LoginActivity.class);
+                Intent i = new Intent(SplashActivity.this, LoginFragment.class);
                 startActivity(i);
                 finish();
             }
