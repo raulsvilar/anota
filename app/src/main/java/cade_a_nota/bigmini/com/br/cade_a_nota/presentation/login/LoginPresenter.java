@@ -2,6 +2,7 @@ package cade_a_nota.bigmini.com.br.cade_a_nota.presentation.login;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.widget.Toast;
@@ -28,6 +29,7 @@ import cade_a_nota.bigmini.com.br.cade_a_nota.R;
 
 public class LoginPresenter implements GoogleApiClient.OnConnectionFailedListener, OnCompleteListener<AuthResult> {
     private FragmentActivity activity;
+    private Fragment fragment;
     private LoginPresenter.LoginStatus status;
     private static final String TAG = LoginPresenter.class.getSimpleName();
     private FirebaseAuth mAuth;
@@ -36,8 +38,9 @@ public class LoginPresenter implements GoogleApiClient.OnConnectionFailedListene
     private GoogleSignInOptions gso;
     public static final int RC_SIGN_IN = 1000;
 
-    public LoginPresenter(FragmentActivity activity, LoginPresenter.LoginStatus status) {
+    public LoginPresenter(FragmentActivity activity, Fragment fragment, LoginPresenter.LoginStatus status) {
         this.activity = activity;
+        this.fragment = fragment;
         this.status = status;
         this.gso = configureGoogleSigIn();
         this.mGoogleApiClient = configureGoogleApiClient();
@@ -94,7 +97,7 @@ public class LoginPresenter implements GoogleApiClient.OnConnectionFailedListene
 
     public void startAuthWithGoogle() {
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
-        activity.startActivityForResult(signInIntent, RC_SIGN_IN);
+        fragment.startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
     public void authWithGoogle(final GoogleSignInAccount acct) {

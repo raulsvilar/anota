@@ -13,23 +13,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:theme">
-        <meta-data
-            android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id" />
 
-        <activity android:name="cade_a_nota.bigmini.com.br.cade_a_nota.presentation.main.MainActivity">
+        <activity android:name=".presentation.main.MainActivity"/>
 
-        </activity>
-        <activity
-            android:name="com.facebook.FacebookActivity"
-            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-            android:label="@string/app_name" />
-        <activity android:name="cade_a_nota.bigmini.com.br.cade_a_nota.views.activities.SplashActivity" />
+        <activity android:name=".views.activities.SplashActivity" />
 
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="6d729b03e4e82c992f99ede97cd4a4e428c30a29" />
-        <activity android:name="cade_a_nota.bigmini.com.br.cade_a_nota.presentation.initial.InitialActivity"
+
+        <activity android:name=".presentation.initial.InitialActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
