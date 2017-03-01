@@ -27,7 +27,7 @@ import cade_a_nota.bigmini.com.br.cade_a_nota.R;
  * Created by Kanda on 09/11/2016.
  */
 
-public class LoginPresenter implements GoogleApiClient.OnConnectionFailedListener, OnCompleteListener<AuthResult> {
+class LoginPresenter implements GoogleApiClient.OnConnectionFailedListener, OnCompleteListener<AuthResult> {
     private FragmentActivity activity;
     private Fragment fragment;
     private LoginPresenter.LoginStatus status;
@@ -36,9 +36,9 @@ public class LoginPresenter implements GoogleApiClient.OnConnectionFailedListene
     private FirebaseAuth.AuthStateListener mAuthListener;
     private GoogleApiClient mGoogleApiClient;
     private GoogleSignInOptions gso;
-    public static final int RC_SIGN_IN = 1000;
+    static final int RC_SIGN_IN = 1000;
 
-    public LoginPresenter(FragmentActivity activity, Fragment fragment, LoginPresenter.LoginStatus status) {
+    LoginPresenter(FragmentActivity activity, Fragment fragment, LoginPresenter.LoginStatus status) {
         this.activity = activity;
         this.fragment = fragment;
         this.status = status;
@@ -54,7 +54,7 @@ public class LoginPresenter implements GoogleApiClient.OnConnectionFailedListene
         Log.d(TAG, "onConnectionFailed:" + connectionResult);
     }
 
-    public void onStop() {
+    void onStop() {
         if (this.mAuthListener != null) {
             this.mAuth.removeAuthStateListener(mAuthListener);
         }
@@ -95,12 +95,12 @@ public class LoginPresenter implements GoogleApiClient.OnConnectionFailedListene
         };
     }
 
-    public void startAuthWithGoogle() {
+    void startAuthWithGoogle() {
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         fragment.startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
-    public void authWithGoogle(final GoogleSignInAccount acct) {
+    void authWithGoogle(final GoogleSignInAccount acct) {
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(activity, this);
@@ -115,7 +115,7 @@ public class LoginPresenter implements GoogleApiClient.OnConnectionFailedListene
         }
     }
 
-    public interface LoginStatus {
+    interface LoginStatus {
         void loginWithSuccess();
     }
 }

@@ -20,7 +20,6 @@ import cade_a_nota.bigmini.com.br.cade_a_nota.R;
 import cade_a_nota.bigmini.com.br.cade_a_nota.presentation.main.MainActivity;
 
 import static android.app.Activity.RESULT_CANCELED;
-import static android.app.Activity.RESULT_OK;
 
 
 public class LoginFragment extends Fragment implements LoginPresenter.LoginStatus {
