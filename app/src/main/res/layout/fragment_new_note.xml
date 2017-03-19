@@ -3,9 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_white"
-    android:padding="16dp"
     android:gravity="center"
-    tools:context="cade_a_nota.bigmini.com.br.cade_a_nota.presentation.notes.NewNoteFragment">
+    android:padding="16dp"
+    tools:context="cade_a_nota.bigmini.com.br.cade_a_nota.presentation.noteregister.NewNoteFragment">
 
 
     <android.support.design.widget.TextInputLayout
@@ -14,11 +14,12 @@
         android:layout_height="wrap_content">
 
         <EditText
+            android:id="@+id/noteName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/title_note"
             android:maxLines="1"
-            android:textAllCaps="false"/>
+            android:textAllCaps="false" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -30,24 +31,37 @@
         android:layout_below="@+id/textInputLayout">
 
         <EditText
+            android:id="@+id/noteDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/note_description"
-            />
+            android:hint="@string/note_description" />
     </android.support.design.widget.TextInputLayout>
 
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/ripple_button"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
-        android:text="@string/save_note"
-        android:textAllCaps="false"
-        android:textColor="@color/colorAccent"
         android:layout_below="@+id/textInputLayout2"
-        android:layout_centerHorizontal="true" />
+        android:gravity="right"
+        android:orientation="horizontal">
 
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/saveButton"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/save_note"
+            android:textAllCaps="false"
+            android:textColor="@color/colorAccent" />
 
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/cancelButton"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cancl"
+            android:layout_marginLeft="4dp"
+            android:textAllCaps="false"
+            android:textColor="@color/colorAccent" />
+    </LinearLayout>
 </RelativeLayout>

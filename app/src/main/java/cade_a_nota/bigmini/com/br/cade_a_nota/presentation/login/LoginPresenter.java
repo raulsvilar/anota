@@ -71,10 +71,13 @@ class LoginPresenter implements GoogleApiClient.OnConnectionFailedListener, OnCo
     }
 
     private GoogleApiClient configureGoogleApiClient() {
-        return new GoogleApiClient.Builder(activity)
-                .enableAutoManage(activity, this)
-                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
-                .build();
+        if (mGoogleApiClient == null || !mGoogleApiClient.isConnected()) {
+            mGoogleApiClient = new GoogleApiClient.Builder(activity)
+                    .enableAutoManage(activity /* FragmentActivity */, this /* OnConnectionFailedListener */)
+                    .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                    .build();
+        }
+        return mGoogleApiClient;
     }
 
     private FirebaseAuth.AuthStateListener authStateListener() {

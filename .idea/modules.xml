@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/anota.iml" filepath="$PROJECT_DIR$/anota.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/cade-a-nota.iml" filepath="$PROJECT_DIR$/cade-a-nota.iml" />
     </modules>
   </component>
 </project>

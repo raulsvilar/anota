@@ -1,6 +1,7 @@
 package cade_a_nota.bigmini.com.br.cade_a_nota.presentation.main;
 
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -9,6 +10,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import cade_a_nota.bigmini.com.br.cade_a_nota.Util.FirebaseNodes;
 
 /**
  * Created by infra on 28/02/2017.
@@ -20,6 +23,7 @@ class MainPresenter implements MainContract.Presenter {
     private DatabaseReference myRef;
     public FirebaseUser user;
     private FirebaseAuth mAuth;
+    private ValueEventListener eventListener;
 
     @Override
     public void execute(MainContract.View view) {
@@ -34,18 +38,22 @@ class MainPresenter implements MainContract.Presenter {
 
     @Override
     public void listenerEmptyState() {
-        myRef.child(user.getUid()).addValueEventListener(new ValueEventListener() {
+        eventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                Log.e("tomanocu","tomanocu");
                 if (dataSnapshot.getChildrenCount() == 0)
                     view.emptyState();
+                else
+                    view.noteList();
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });
+        };
+        myRef.child(FirebaseNodes.NODE_NOTES).child(user.getUid()).addValueEventListener(eventListener);
     }
 
     @Override
@@ -70,6 +78,7 @@ class MainPresenter implements MainContract.Presenter {
     @Override
     public void onStop() {
         mAuth.removeAuthStateListener(mAuthListener);
+        myRef.child(FirebaseNodes.NODE_NOTES).child(user.getUid()).removeEventListener(eventListener);
     }
 
 }

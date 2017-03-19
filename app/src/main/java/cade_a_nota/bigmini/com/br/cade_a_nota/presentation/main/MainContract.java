@@ -9,6 +9,8 @@ interface MainContract {
         void emptyState();
 
         void singedOut();
+
+        void noteList();
     }
 
     interface Presenter {

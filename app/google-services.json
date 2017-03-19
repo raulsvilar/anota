@@ -15,11 +15,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "70847432433-m8d8pjq0kcch7potr82diiiep495dh52.apps.googleusercontent.com",
+          "client_id": "70847432433-6t3pqnkkiii3l7llumilu1ol89ofoke1.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "cade_a_nota.bigmini.com.br.cade_a_nota",
-            "certificate_hash": "df068861b3f4c25c77d9901fe6f491253ea4b555"
+            "certificate_hash": "54acf005d18ca07f786437eae2a2b06f979dfd09"
           }
         },
         {

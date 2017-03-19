@@ -2,6 +2,8 @@ package cade_a_nota.bigmini.com.br.cade_a_nota.presentation.base;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -53,5 +55,10 @@ public class BaseActivity extends AppCompatActivity {
 
     public void addFragment(Fragment fragment) {
         getSupportFragmentManager().beginTransaction().add(R.id.container, fragment).commit();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+
     }
 }

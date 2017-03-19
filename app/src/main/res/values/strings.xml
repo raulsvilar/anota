@@ -19,5 +19,6 @@
     <string name="title_note">Nome da nota</string>
     <string name="note_description">Descrição da nota(Opcional)</string>
     <string name="save_note">Salvar nota</string>
+    <string name="cancl">Cancelar</string>
     <string name="new_note">Adicionar nova nota</string>
 </resources>
