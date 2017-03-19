@@ -8,6 +8,8 @@ import android.support.v4.content.ContextCompat;
 import cade_a_nota.bigmini.com.br.cade_a_nota.R;
 import cade_a_nota.bigmini.com.br.cade_a_nota.presentation.base.BaseActivity;
 import cade_a_nota.bigmini.com.br.cade_a_nota.presentation.login.LoginFragment;
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
 
 public class InitialActivity extends BaseActivity {
 

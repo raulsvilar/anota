@@ -28,11 +28,7 @@ import butterknife.OnClick;
 import cade_a_nota.bigmini.com.br.cade_a_nota.R;
 import cade_a_nota.bigmini.com.br.cade_a_nota.presentation.main.MainActivity;
 
-import static cade_a_nota.bigmini.com.br.cade_a_nota.presentation.login.LoginPresenter.RC_SIGN_IN;
-
-
-public class LoginFragment extends Fragment implements LoginPresenter.LoginStatus, GoogleApiClient.OnConnectionFailedListener {
-    private LoginPresenter presenter;
+public class LoginFragment extends Fragment implements GoogleApiClient.OnConnectionFailedListener {
 
     @BindView(R.id.logo)
     TextView logo;
@@ -40,6 +36,7 @@ public class LoginFragment extends Fragment implements LoginPresenter.LoginStatu
     private GoogleApiClient mGoogleClient;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private FirebaseAuth mAuth;
+    private static final int RC_SIGN_IN = 1001;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -63,12 +60,6 @@ public class LoginFragment extends Fragment implements LoginPresenter.LoginStatu
     public void onStop() {
         super.onStop();
         mAuth.removeAuthStateListener(mAuthListener);
-    }
-
-    @Override
-    public void loginWithSuccess() {
-        startActivity(new Intent(getActivity(), MainActivity.class));
-        getActivity().finish();
     }
 
     @Override
@@ -98,7 +89,7 @@ public class LoginFragment extends Fragment implements LoginPresenter.LoginStatu
 
     public void googleClient() {
         mGoogleClient = new GoogleApiClient.Builder(getActivity())
-              //  .enableAutoManage(getActivity() /* FragmentActivity */, this /* OnConnectionFailedListener */)
+                //  .enableAutoManage(getActivity() /* FragmentActivity */, this /* OnConnectionFailedListener */)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
     }

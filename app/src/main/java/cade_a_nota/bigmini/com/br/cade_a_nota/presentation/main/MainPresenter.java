@@ -41,7 +41,6 @@ class MainPresenter implements MainContract.Presenter {
         eventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Log.e("tomanocu","tomanocu");
                 if (dataSnapshot.getChildrenCount() == 0)
                     view.emptyState();
                 else

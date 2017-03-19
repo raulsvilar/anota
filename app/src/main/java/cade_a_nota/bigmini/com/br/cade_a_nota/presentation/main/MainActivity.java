@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -41,6 +42,7 @@ public class MainActivity extends BaseActivity implements MainContract.View {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        MobileAds.initialize(this, "ca-app-pub-2158352779117766~4658949532");
         getSupportActionBar().setTitle("Minhas Notas");
         AdRequest adRequest = new AdRequest.Builder().build();
         ads.loadAd(adRequest);
