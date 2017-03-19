@@ -4,11 +4,11 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.AppCompatButton;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +20,7 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 import butterknife.BindView;
@@ -28,10 +29,17 @@ import butterknife.OnClick;
 import cade_a_nota.bigmini.com.br.cade_a_nota.R;
 import cade_a_nota.bigmini.com.br.cade_a_nota.presentation.main.MainActivity;
 
-public class LoginFragment extends Fragment implements GoogleApiClient.OnConnectionFailedListener {
+public class LoginActivity extends FragmentActivity implements GoogleApiClient.OnConnectionFailedListener {
 
     @BindView(R.id.logo)
     TextView logo;
+
+    @BindView(R.id.progress)
+    ProgressBar progressBar;
+
+    @BindView(R.id.login)
+    AppCompatButton login;
+
     private GoogleSignInOptions gso;
     private GoogleApiClient mGoogleClient;
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -39,15 +47,13 @@ public class LoginFragment extends Fragment implements GoogleApiClient.OnConnect
     private static final int RC_SIGN_IN = 1001;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_login, container, false);
-        ButterKnife.bind(this, view);
-        Typeface face = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Baloo-Regular.ttf");
-        logo.setTypeface(face);
-        mAuth = FirebaseAuth.getInstance();
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_login);
+        ButterKnife.bind(this);
         execute();
-        return view;
+        Typeface face = Typeface.createFromAsset(getAssets(), "fonts/Baloo-Regular.ttf");
+        logo.setTypeface(face);
     }
 
     @Override
@@ -59,7 +65,9 @@ public class LoginFragment extends Fragment implements GoogleApiClient.OnConnect
     @Override
     public void onStop() {
         super.onStop();
-        mAuth.removeAuthStateListener(mAuthListener);
+        if (mAuthListener != null) {
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
     }
 
     @Override
@@ -72,7 +80,7 @@ public class LoginFragment extends Fragment implements GoogleApiClient.OnConnect
                 if (account != null) {
                     firebaseAuthWithGoogle(account);
                 } else {
-                    Toast.makeText(getActivity(), "Error Login", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Error Login", Toast.LENGTH_SHORT).show();
                 }
             } else {
                 Log.e("a", "a");
@@ -88,17 +96,21 @@ public class LoginFragment extends Fragment implements GoogleApiClient.OnConnect
     }
 
     public void googleClient() {
-        mGoogleClient = new GoogleApiClient.Builder(getActivity())
-                //  .enableAutoManage(getActivity() /* FragmentActivity */, this /* OnConnectionFailedListener */)
+        mGoogleClient = new GoogleApiClient.Builder(this)
+                .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
     }
 
     public void firebaseAuthListener() {
-        mAuthListener = firebaseAuth -> {
-            if (firebaseAuth.getCurrentUser() != null) {
-                startActivity(new Intent(getActivity(), MainActivity.class));
-                getActivity().finish();
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    finish();
+                }
             }
         };
     }
@@ -107,7 +119,7 @@ public class LoginFragment extends Fragment implements GoogleApiClient.OnConnect
         firebaseAuthListener();
         gso();
         googleClient();
-        mAuth.addAuthStateListener(mAuthListener);
+        mAuth = FirebaseAuth.getInstance();
     }
 
     private void signIn() {
@@ -116,11 +128,15 @@ public class LoginFragment extends Fragment implements GoogleApiClient.OnConnect
     }
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
+        progressBar.setVisibility(View.VISIBLE);
+        login.setClickable(false);
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mAuth.signInWithCredential(credential).addOnCompleteListener(Runnable::run, task -> {
             if (!task.isSuccessful()) {
-                Toast.makeText(getActivity(), "Authentication failed.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Authentication failed.", Toast.LENGTH_SHORT).show();
             }
+            progressBar.setVisibility(View.GONE);
+            login.setClickable(true);
         });
     }
 

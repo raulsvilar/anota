@@ -1,8 +1,5 @@
 package cade_a_nota.bigmini.com.br.cade_a_nota.presentation.main;
 
-import android.support.annotation.NonNull;
-import android.util.Log;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -58,15 +55,12 @@ class MainPresenter implements MainContract.Presenter {
     @Override
     public void onStart() {
         if (mAuthListener == null) {
-            mAuthListener = new FirebaseAuth.AuthStateListener() {
-                @Override
-                public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                    FirebaseUser user1 = firebaseAuth.getCurrentUser();
-                    if (user1 == null) {
-                        view.singedOut();
-                    } else {
-                        user = user1;
-                    }
+            mAuthListener = firebaseAuth -> {
+                FirebaseUser user1 = firebaseAuth.getCurrentUser();
+                if (user1 == null) {
+                    view.singedOut();
+                } else {
+                    user = user1;
                 }
             };
         } else {

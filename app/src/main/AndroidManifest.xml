@@ -32,7 +32,11 @@
         <activity
             android:name=".presentation.scan.ScanActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".presentation.webview.WebViewActivity"></activity>
+        <activity android:name=".presentation.webview.WebViewActivity" />
+        <activity
+            android:name=".presentation.login.LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

@@ -60,6 +60,11 @@ public class MainActivity extends BaseActivity implements MainContract.View {
         presenter.onStop();
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        presenter.onStop();
+    }
 
     @OnClick(R.id.floating_action_button)
     public void onClick() {
@@ -93,10 +98,5 @@ public class MainActivity extends BaseActivity implements MainContract.View {
             startActivity(new Intent(this, InitialActivity.class));
             finish();
         }
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-
     }
 }

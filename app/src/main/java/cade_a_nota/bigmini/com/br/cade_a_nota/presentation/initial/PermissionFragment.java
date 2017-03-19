@@ -19,7 +19,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cade_a_nota.bigmini.com.br.cade_a_nota.R;
-import cade_a_nota.bigmini.com.br.cade_a_nota.presentation.login.LoginFragment;
+import cade_a_nota.bigmini.com.br.cade_a_nota.presentation.login.LoginActivity;
 import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.OnNeverAskAgain;
 import permissions.dispatcher.OnShowRationale;
@@ -54,7 +54,8 @@ public class PermissionFragment extends Fragment {
 
     @NeedsPermission(Manifest.permission.CAMERA)
     public void permissionSuccess() {
-        getActivity().getSupportFragmentManager().beginTransaction().add(R.id.container, new LoginFragment()).commitAllowingStateLoss();
+        startActivity(new Intent(getActivity(), LoginActivity.class));
+        getActivity().finish();
     }
 
     @OnNeverAskAgain(Manifest.permission.CAMERA)

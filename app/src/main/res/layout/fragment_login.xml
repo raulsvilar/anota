@@ -20,13 +20,24 @@
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/login"
         style="@style/Base.Widget.AppCompat.Button.Borderless"
-        android:background="@drawable/btn_shape_border"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Entrar"
-        android:textAllCaps="false"
-        android:textColor="@android:color/white"
         android:layout_below="@+id/logo"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="64dp" />
+        android:layout_marginTop="64dp"
+        android:background="@drawable/btn_shape_border"
+        android:text="Entrar"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white" />
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="46dp"
+        android:indeterminate="true"
+        android:theme="@style/progressColor"
+        android:visibility="gone" />
 </RelativeLayout>
