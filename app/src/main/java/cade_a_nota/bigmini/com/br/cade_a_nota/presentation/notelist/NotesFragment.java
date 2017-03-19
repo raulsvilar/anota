@@ -1,6 +1,7 @@
 package cade_a_nota.bigmini.com.br.cade_a_nota.presentation.notelist;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -19,6 +20,8 @@ import butterknife.ButterKnife;
 import cade_a_nota.bigmini.com.br.cade_a_nota.R;
 import cade_a_nota.bigmini.com.br.cade_a_nota.Util.FirebaseNodes;
 import cade_a_nota.bigmini.com.br.cade_a_nota.model.Note;
+import cade_a_nota.bigmini.com.br.cade_a_nota.presentation.scan.ScanActivity;
+import cade_a_nota.bigmini.com.br.cade_a_nota.presentation.webview.WebViewActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,7 +30,6 @@ public class NotesFragment extends Fragment {
 
     @BindView(R.id.noteList)
     RecyclerView noteList;
-
 
     public NotesFragment() {
         // Required empty public constructor
@@ -60,6 +62,7 @@ public class NotesFragment extends Fragment {
                     myRef.child(model.getId()).removeValue();
                     return true;
                 });
+                viewHolder.itemView.setOnClickListener(v -> startActivity(new Intent(getActivity(), WebViewActivity.class).putExtra("url", model.getUrl())));
             }
         };
         noteList.setAdapter(mAdapter);

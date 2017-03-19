@@ -20,5 +20,6 @@
     <string name="note_description">Descrição da nota(Opcional)</string>
     <string name="save_note">Salvar nota</string>
     <string name="cancl">Cancelar</string>
+    <string name="banner_ad_unit_id" translatable="false">ca-app-pub-2158352779117766/</string>
     <string name="new_note">Adicionar nova nota</string>
 </resources>

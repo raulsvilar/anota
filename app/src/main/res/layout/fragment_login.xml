@@ -16,4 +16,17 @@
         android:textAllCaps="false"
         android:textColor="@color/color_white"
         android:textSize="40sp" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/login"
+        style="@style/Base.Widget.AppCompat.Button.Borderless"
+        android:background="@drawable/btn_shape_border"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Entrar"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:layout_below="@+id/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="64dp" />
 </RelativeLayout>

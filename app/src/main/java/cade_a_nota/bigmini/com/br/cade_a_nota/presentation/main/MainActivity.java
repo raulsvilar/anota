@@ -9,6 +9,9 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -22,7 +25,8 @@ public class MainActivity extends BaseActivity implements MainContract.View {
     @BindView(R.id.floating_action_button)
     FloatingActionButton floatingActionButton;
     private MainContract.Presenter presenter;
-
+    @BindView(R.id.ads)
+    AdView ads;
 
     @Override
     protected void onStart() {
@@ -38,7 +42,8 @@ public class MainActivity extends BaseActivity implements MainContract.View {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         getSupportActionBar().setTitle("Minhas Notas");
-
+        AdRequest adRequest = new AdRequest.Builder().build();
+        ads.loadAd(adRequest);
     }
 
     @Override
