@@ -32,6 +32,7 @@ public class ScanActivity extends BaseActivity implements ZXingScannerView.Resul
         mScannerView.setFormats(formats);
         mScannerView.setResultHandler(this);
         mScannerView.startCamera();
+
     }
 
     @Override
@@ -47,4 +48,11 @@ public class ScanActivity extends BaseActivity implements ZXingScannerView.Resul
         super.onResume();
         startScanner();
     }
+
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        mScannerView.stopCamera();
+    }
+
 }
