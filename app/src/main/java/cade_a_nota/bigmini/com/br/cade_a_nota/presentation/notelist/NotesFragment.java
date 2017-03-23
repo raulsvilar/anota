@@ -79,7 +79,7 @@ public class NotesFragment extends Fragment {
 
         AlertDialog.Builder build = new AlertDialog.Builder(getActivity());
         build.setIcon(R.mipmap.ic_launcher);
-        build.setTitle("ANota");
+        build.setTitle(model.getNoteTitle());
         build.setMessage("Deseja excluir essa nota?");
         build.setNegativeButton("Não", new DialogInterface.OnClickListener() {
             @Override

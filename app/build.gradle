@@ -22,8 +22,8 @@ android {
         applicationId "cade_a_nota.bigmini.com.br.cade_a_nota"
         minSdkVersion 16
         targetSdkVersion 25
-        versionCode 3
-        versionName "1.0.2"
+        versionCode 5
+        versionName "1.0.4"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
