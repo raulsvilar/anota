@@ -1,14 +1,17 @@
 package cade_a_nota.bigmini.com.br.cade_a_nota.presentation.notelist;
 
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,7 +23,6 @@ import butterknife.ButterKnife;
 import cade_a_nota.bigmini.com.br.cade_a_nota.R;
 import cade_a_nota.bigmini.com.br.cade_a_nota.Util.FirebaseNodes;
 import cade_a_nota.bigmini.com.br.cade_a_nota.model.Note;
-import cade_a_nota.bigmini.com.br.cade_a_nota.presentation.scan.ScanActivity;
 import cade_a_nota.bigmini.com.br.cade_a_nota.presentation.webview.WebViewActivity;
 
 /**
@@ -45,6 +47,7 @@ public class NotesFragment extends Fragment {
         ButterKnife.bind(this, v);
         noteList.setHasFixedSize(true);
         noteList.setLayoutManager(new LinearLayoutManager(getActivity()));
+
         execute();
         return v;
     }
@@ -59,12 +62,42 @@ public class NotesFragment extends Fragment {
             protected void populateViewHolder(ListHolder viewHolder, final Note model, int position) {
                 viewHolder.setName(model.getNoteTitle());
                 viewHolder.itemView.setOnLongClickListener(v -> {
-                    myRef.child(model.getId()).removeValue();
+                    AlertDialog alertDialog = alertDelete(myRef, model);
+                    alertDialog.show();
                     return true;
                 });
                 viewHolder.itemView.setOnClickListener(v -> startActivity(new Intent(getActivity(), WebViewActivity.class).putExtra("url", model.getUrl())));
+
             }
         };
         noteList.setAdapter(mAdapter);
+        mAdapter.notifyDataSetChanged();
+    }
+
+
+    private AlertDialog alertDelete(DatabaseReference myRef, Note model) {
+
+        AlertDialog.Builder build = new AlertDialog.Builder(getActivity());
+        build.setIcon(R.mipmap.ic_launcher);
+        build.setTitle("ANota");
+        build.setMessage("Deseja excluir essa nota?");
+        build.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        build.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                myRef.child(model.getId()).removeValue();
+                Toast.makeText(getActivity(), "Nota excluída com sucesso!", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        AlertDialog dialog = build.create();
+        return dialog;
+
     }
 }

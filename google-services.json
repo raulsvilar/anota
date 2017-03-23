@@ -1,0 +1,71 @@
+{
+  "project_info": {
+    "project_number": "70847432433",
+    "firebase_url": "https://cade-a-nota.firebaseio.com",
+    "project_id": "cade-a-nota",
+    "storage_bucket": "cade-a-nota.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:70847432433:android:a3e8e780fbc94483",
+        "android_client_info": {
+          "package_name": "cade_a_nota.bigmini.com.br.cade_a_nota"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "70847432433-qkpbvv77i19s2e1tglo6sth831pe1obi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "cade_a_nota.bigmini.com.br.cade_a_nota",
+            "certificate_hash": "17b956a9a4bbfc231a5a1a7b1798ea4f317f5d8b"
+          }
+        },
+        {
+          "client_id": "70847432433-c67n9674nviad0tscb1q7i6e76m0ub7t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "cade_a_nota.bigmini.com.br.cade_a_nota",
+            "certificate_hash": "1ad0dd4608cdaa5e690f4e76335f2d5d16499429"
+          }
+        },
+        {
+          "client_id": "70847432433-6t3pqnkkiii3l7llumilu1ol89ofoke1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "cade_a_nota.bigmini.com.br.cade_a_nota",
+            "certificate_hash": "54acf005d18ca07f786437eae2a2b06f979dfd09"
+          }
+        },
+        {
+          "client_id": "70847432433-5jbbef7hg40ct04tbii1f57rr7jqd162.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMqnbR3aMO3ei6U1RD2c-UaWGxv6fQ3S8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "70847432433-5jbbef7hg40ct04tbii1f57rr7jqd162.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

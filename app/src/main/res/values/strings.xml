@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Anota</string>
+    <string name="app_name">ANota</string>
     <string name="facebook_app_id">364048993932747</string>
     <string name="msg_close">Fechar</string>
     <string name="msg_title_dialog">Cade a nota</string>
